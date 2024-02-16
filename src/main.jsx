@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Contact from "./Contact";
 import EditContact from "./EditContact";
 import ErrorPage from "./Error";
+import Index from "./Index";
 import Root from "./Root";
 import { createContactAction, deleteContactAction, editContactAction } from "./actions/conatctsActions";
 import "./index.css";
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     action: createContactAction,
     children: [
       {
+        index: true,
+        element: <Index />,
+      },
+      {
         path: "contacts/:contactId",
         element: <Contact />,
         loader: contactLoader,
@@ -31,6 +36,7 @@ const router = createBrowserRouter([
       {
         path: "contacts/:contactId/destroy",
         action: deleteContactAction,
+        errorElement: <div>Oops! There was an error deleting the contact.</div>,
       },
     ],
   },
