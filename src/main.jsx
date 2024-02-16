@@ -4,21 +4,22 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Contact from "./Contact";
 import ErrorPage from "./Error";
 import Root from "./Root";
-import "./index.css";
-import { contactLoader } from "./loaders/contactsLoader";
 import { createContactAction } from "./actions/conatctsActions";
+import "./index.css";
+import { contactLoader, contactsLoader } from "./loaders/contactsLoader";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    loader: contactLoader,
+    loader: contactsLoader,
     action: createContactAction,
     children: [
       {
         path: "contacts/:contactId",
         element: <Contact />,
+        loader: contactLoader
       },
     ],
   },
