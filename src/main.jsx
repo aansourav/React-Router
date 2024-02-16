@@ -5,12 +5,14 @@ import Contact from "./Contact";
 import ErrorPage from "./Error";
 import Root from "./Root";
 import "./index.css";
+import { contactLoader } from "./loaders/contactsLoader";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    loader: contactLoader,
     children: [
       {
         path: "contacts/:contactId",
