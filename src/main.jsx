@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Root from "./Root";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello Router!</div>,
+    element: <Root />,
   },
 ]);
 
