@@ -24,25 +24,32 @@ const router = createBrowserRouter([
     action: createContactAction,
     children: [
       {
-        index: true,
-        element: <Index />
-      },
-      {
-        path: 'contacts/:contactId',
-        element: <Contact />,
-        loader: contactLoader,
-        action: contactFavourite
-      },
-      {
-        path: 'contacts/:contactId/edit',
-        element: <EditContact />,
-        loader: contactLoader,
-        action: editContactAction
-      },
-      {
-        path: 'contacts/:contactId/destroy',
-        action: deleteContactAction,
-        errorElement: <div>Oops! There was an error deleting the contact.</div>
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <Index />
+          },
+          {
+            path: 'contacts/:contactId',
+            element: <Contact />,
+            loader: contactLoader,
+            action: contactFavourite
+          },
+          {
+            path: 'contacts/:contactId/edit',
+            element: <EditContact />,
+            loader: contactLoader,
+            action: editContactAction
+          },
+          {
+            path: 'contacts/:contactId/destroy',
+            action: deleteContactAction,
+            errorElement: (
+              <div>Oops! There was an error deleting the contact.</div>
+            )
+          }
+        ]
       }
     ]
   }
