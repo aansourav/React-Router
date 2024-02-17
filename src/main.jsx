@@ -7,6 +7,7 @@ import ErrorPage from './Error'
 import Index from './Index'
 import Root from './Root'
 import {
+  contactFavourite,
   createContactAction,
   deleteContactAction,
   editContactAction
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       {
         path: 'contacts/:contactId',
         element: <Contact />,
-        loader: contactLoader
+        loader: contactLoader,
+        action: contactFavourite
       },
       {
         path: 'contacts/:contactId/edit',
